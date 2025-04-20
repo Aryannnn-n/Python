@@ -358,15 +358,15 @@ Clip:     This is a long text
 !Important > Inline Style > ID Selector > Class or Attribute Selector > Element Selector > Universal Selector
 
 <!-- CSS Units -->
-px 
+
+px
 em
 rem
 vh
 vw
-vmin 
+vmin
 vmax
 %
-
 
 # 🧮 CSS Specificity & Units – Quick Reference
 
@@ -381,8 +381,6 @@ When multiple CSS rules apply to the same element, the browser uses specificity 
 ```
 !important > Inline Style > ID Selector > Class/Attribute Selector > Element Selector > Universal Selector
 ```
-
-
 
 ---
 
@@ -446,6 +444,135 @@ padding: 5vmax;
 
 ---
 
-> 🧠 Use relative units for responsive designs and `!important` sparingly to avoid specificity issues.
 
 
+# 🎨 Advanced CSS Styling – Quick Reference
+
+This guide covers advanced CSS properties like `display`, `box-shadow`, `text-shadow`, `outline`, styling lists, and controlling overflow.
+
+---
+
+## 🖼️ Display Property
+
+The `display` property defines how an element is displayed in the document. It is one of the most important properties in CSS.
+
+### Common Values:
+
+- `block`: The element takes up the full width and starts on a new line.
+- `inline`: The element does not start on a new line and only takes up as much width as necessary.
+- `inline-block`: Behaves like `inline` but allows setting width and height.
+- `none`: Hides the element from the layout (it’s not rendered).
+- `flex`: Enables Flexbox layout for flexible layouts.
+- `grid`: Enables CSS Grid layout.
+- `inline-flex` / `inline-grid`: Same as above but behave like inline elements.
+- `contents`: Makes the container disappear, making the child elements act as if they're not wrapped.
+- `table`: Makes the element behave like a `<table>`.
+- `list-item`: Makes the element behave like a `<li>`.
+
+```css
+.container {
+  display: flex;
+  justify-content: center;
+}
+```
+
+---
+
+## 🌫️ Shadows & Outlines
+
+### 🔳 Box Shadow
+
+Adds shadow effects around an element’s frame.
+
+```css
+box-shadow: h-offset v-offset blur spread color inset;
+```
+
+- **h-offset**: Horizontal distance
+- **v-offset**: Vertical distance
+- **blur**: Blur radius
+- **spread**: Size of the shadow
+- **color**: Shadow color
+- **inset**: Makes the shadow inner
+
+```css
+box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.2);
+```
+
+---
+
+### ✍️ Text Shadow
+
+Adds shadow to text for visual depth or clarity.
+
+```css
+text-shadow: h-offset v-offset blur color;
+```
+
+```css
+text-shadow: 2px 2px 4px #888888;
+```
+
+---
+
+### 🖍️ Outline
+
+Outlines are lines drawn outside the border edge. Commonly used for highlighting focusable elements.
+
+```css
+outline: width style color;
+```
+
+- **width**: e.g., `2px`
+- **style**: `solid`, `dotted`, `dashed`, `double`, etc.
+- **color**: e.g., `red`
+
+```css
+outline: 2px dashed red;
+```
+
+> 🧠 Unlike `border`, outlines do not take up space in layout and can overlap content.
+
+---
+
+## ✅ Styling Lists
+
+You can use `list-style-type`, `list-style-position`, and `list-style-image` for customizing lists.
+
+```css
+ul {
+  list-style-type: square;
+  list-style-position: inside;
+}
+```
+
+- `list-style-type`: `disc`, `circle`, `square`, `decimal`, etc.
+- `list-style-position`: `inside`, `outside`
+- `list-style-image`: Use an image as the bullet.
+
+---
+
+## 📜 CSS Overflow
+
+Controls what happens when content overflows an element’s box.
+
+```css
+overflow: visible | hidden | scroll | auto;
+```
+
+- `visible`: Default. Content is not clipped.
+- `hidden`: Overflowing content is hidden.
+- `scroll`: Always adds a scrollbar.
+- `auto`: Scrollbar only added when needed.
+
+```css
+.container {
+  overflow: auto;
+}
+```
+
+---
+
+<!-- Css Position Property -->
+default = static
+relative absolute z-index
