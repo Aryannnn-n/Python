@@ -444,8 +444,6 @@ padding: 5vmax;
 
 ---
 
-
-
 # 🎨 Advanced CSS Styling – Quick Reference
 
 This guide covers advanced CSS properties like `display`, `box-shadow`, `text-shadow`, `outline`, styling lists, and controlling overflow.
@@ -573,6 +571,374 @@ overflow: visible | hidden | scroll | auto;
 
 ---
 
-<!-- Css Position Property -->
-default = static
-relative absolute z-index
+## 📍 CSS Position Property
+
+The `position` property specifies how an element is positioned in the document. It works in conjunction with the `top`, `right`, `bottom`, and `left` properties.
+
+### 🔹 static (default)
+
+- Elements are positioned according to the normal document flow.
+- `top`, `right`, `bottom`, `left`, and `z-index` have **no effect**.
+
+```css
+.element {
+  position: static;
+}
+```
+
+---
+
+### 🔸 relative
+
+- Element is positioned relative to its **normal** position.
+- `top`, `right`, `bottom`, `left` move the element **from its original location**.
+
+```css
+.element {
+  position: relative;
+  top: 10px;
+  left: 5px;
+}
+```
+
+---
+
+### 🔸 absolute
+
+- Positioned relative to the **nearest positioned ancestor** (non-static).
+- If no such ancestor, it is positioned relative to the `<html>` element.
+- It is removed from normal document flow.
+
+```css
+.element {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+```
+
+---
+
+### 🔸 fixed
+
+- Positioned relative to the **viewport**.
+- Stays fixed when the page is scrolled.
+
+```css
+.element {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+```
+
+---
+
+### 🔸 sticky
+
+- A hybrid of `relative` and `fixed`.
+- Element toggles between `relative` and `fixed` depending on scroll position.
+
+```css
+.element {
+  position: sticky;
+  top: 20px;
+}
+```
+
+---
+
+### ✨ z-index
+
+- Controls the **stacking order** of positioned elements.
+- Higher value = closer to the front.
+
+```css
+.element {
+  position: absolute;
+  z-index: 10;
+}
+```
+
+---
+
+## 🎯 CSS Variables (Custom Properties)
+
+CSS variables allow you to define reusable values across your CSS stylesheets.
+
+### 🔹 Syntax
+
+Define a variable:
+
+```css
+:root {
+  --main-color: #3498db;
+  --padding: 20px;
+}
+```
+
+Use a variable:
+
+```css
+.box {
+  background-color: var(--main-color);
+  padding: var(--padding);
+}
+```
+
+- Variables are case-sensitive.
+- They cascade like normal CSS properties and can be overridden within specific scopes.
+
+---
+
+## 📲 Media Queries
+
+Media queries are used to apply CSS rules based on device characteristics such as screen width, height, orientation, and more.
+
+### 🔹 Media Query Syntax
+
+```css
+@media not|only mediatype and (expression) {
+  /* CSS code */
+}
+```
+
+### ✅ Example
+
+```css
+@media only screen and (min-width: 444px) {
+  .boxes {
+    background-color: purple;
+  }
+}
+```
+
+---
+
+### 📏 min-width
+
+```css
+@media (min-width: 500px) {
+  /* styles apply */
+}
+```
+
+- ✅ Applied when screen width is **500px or more**
+- ❌ Ignored if screen is **less than 500px**
+
+---
+
+### 📐 max-width
+
+```css
+@media (max-width: 500px) {
+  /* styles apply */
+}
+```
+
+- ✅ Applied when screen width is **500px or less**
+- ❌ Ignored if screen is **more than 500px**
+
+---
+
+### 📚 Common Media Types
+
+- `all` – Suitable for all devices.
+- `print` – For printed material or print preview.
+- `screen` – For computer screens, tablets, smartphones.
+
+---
+
+## 📦 Float and Clear
+
+### 🔹 float
+
+The `float` property places an element to the left or right of its container, allowing text and inline elements to wrap around it.
+
+```css
+img {
+  float: left;
+}
+```
+
+**Values:**
+
+- `left` – Floats the element to the left
+- `right` – Floats the element to the right
+- `none` – Default. Element does not float
+- `inherit` – Inherits float value from parent
+
+---
+
+### 🔹 clear
+
+The `clear` property prevents an element from wrapping around floating elements.
+
+```css
+.clearfix {
+  clear: both;
+}
+```
+
+**Values:**
+
+- `left` – No floating elements allowed on the left
+- `right` – No floating elements allowed on the right
+- `both` – No floating elements allowed on either side
+- `none` – Allows floating elements on both sides
+
+---
+
+✅ Use a clearfix to contain floats inside a container:
+
+```css
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+```
+
+---
+
+# 🎯 Advanced CSS Selectors – Cheat Sheet
+
+---
+
+## 🧠 Pseudo-Classes
+
+### `:first-child`
+
+Selects the first child of a parent element.
+
+```css
+.box:first-child {
+  background-color: red;
+}
+```
+
+---
+
+### `:nth-child(odd)`
+
+Selects every odd child element (1st, 3rd, 5th, ...).
+
+```css
+.box:nth-child(odd) {
+  background-color: blue;
+}
+```
+
+---
+
+### `:nth-last-child(2)`
+
+Selects the second element from the end.
+
+```css
+.box:nth-last-child(2) {
+  background-color: red;
+}
+```
+
+---
+
+## 🎭 Pseudo-Elements
+
+### `::first-line`
+
+Targets the first line of text in an element.
+
+```css
+.box::first-line {
+  color: yellow;
+}
+```
+
+---
+
+### `::first-letter`
+
+Targets the first letter of the text in an element.
+
+```css
+.box::first-letter {
+  color: peru;
+  font-size: 45px;
+}
+```
+
+---
+
+### `::before` and `::after`
+
+Used to insert content before or after the content of an element.
+
+```css
+.boxes::before {
+  content: 'Harry is good';
+  color: blue;
+}
+
+.boxes::after {
+  content: 'Sigma course is also good';
+  color: red;
+}
+```
+
+---
+
+### `::selection`
+
+Applies styles to the portion of an element that is selected by the user.
+
+```css
+::selection {
+  background-color: black;
+  color: aqua;
+}
+```
+
+---
+
+### `::placeholder`
+
+Styles placeholder text in `<input>` and `<textarea>`.
+
+```css
+input::placeholder {
+  color: rgb(84, 84, 88);
+}
+```
+
+---
+
+## 💡 Group Selectors and Universal Selectors
+
+### Universal Selector `*`
+
+Targets all elements inside `.boxes`.
+
+```css
+.boxes * {
+  color: blue;
+  border: 2px solid black;
+}
+```
+
+---
+
+### Group Selector `p, a, .box, [data-color="primary"]`
+
+Applies styles to multiple elements and attributes.
+
+```css
+p,
+a,
+.box,
+[data-color='primary'] {
+  padding-top: 45px;
+}
+```
+
+---
