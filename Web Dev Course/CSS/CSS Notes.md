@@ -942,3 +942,370 @@ a,
 ```
 
 ---
+
+The **Flexbox Layout (Flexible Box)** module makes it easier to design flexible responsive layout structures without using float or positioning.
+
+---
+
+## 🔧 Flex Container Properties
+
+### ✅ `display: flex;`
+
+Defines a flex container.
+
+```css
+.container {
+  display: flex;
+}
+```
+
+---
+
+### ✅ `flex-direction`
+
+Defines the direction of the **main axis**.
+
+- `row` – Default, left to right.
+- `row-reverse` – Right to left.
+- `column` – Top to bottom.
+- `column-reverse` – Bottom to top.
+
+```css
+.container {
+  flex-direction: column;
+}
+```
+
+---
+
+### ✅ `flex-wrap`
+
+Controls whether flex items wrap or not.
+
+- `nowrap` – Default, all items on one line.
+- `wrap` – Items wrap onto multiple lines.
+- `wrap-reverse` – Wrap in reverse order.
+
+```css
+.container {
+  flex-wrap: wrap;
+}
+```
+
+---
+
+### ✅ `flex-flow`
+
+Shorthand for `flex-direction` and `flex-wrap`.
+
+```css
+.container {
+  flex-flow: row wrap;
+}
+```
+
+---
+
+### ✅ `justify-content`
+
+Aligns items **horizontally** along the **main axis**.
+
+- `flex-start` | `flex-end`
+- `center`
+- `space-between`
+- `space-around`
+- `space-evenly`
+
+```css
+.container {
+  justify-content: space-between;
+}
+```
+
+---
+
+### ✅ `align-items`
+
+Aligns items **vertically** along the **cross axis**.
+
+- `stretch` (default)
+- `flex-start` | `flex-end`
+- `center`
+- `baseline`
+
+```css
+.container {
+  align-items: center;
+}
+```
+
+---
+
+### ✅ `align-content`
+
+Aligns **rows of items** when there's extra space on the **cross axis**.
+
+- `flex-start` | `flex-end`
+- `center`
+- `space-between`
+- `space-around`
+- `stretch`
+
+```css
+.container {
+  align-content: space-between;
+}
+```
+
+---
+
+## 🎯 Flex Item Properties
+
+### 🔹 `order`
+
+Defines the order of the item (default: 0). Lower values appear first.
+
+```css
+.item {
+  order: 2;
+}
+```
+
+---
+
+### 🔹 `flex-grow`
+
+Defines how much a flex item will grow relative to the rest.
+
+```css
+.item {
+  flex-grow: 1;
+}
+```
+
+---
+
+### 🔹 `flex-shrink`
+
+Defines how a flex item shrinks when space is tight.
+
+```css
+.item {
+  flex-shrink: 1;
+}
+```
+
+---
+
+### 🔹 `flex-basis`
+
+Defines the initial size of a flex item **before** remaining space is distributed.
+
+```css
+.item {
+  flex-basis: 200px;
+}
+```
+
+---
+
+### 🔹 `flex`
+
+Shorthand for `flex-grow`, `flex-shrink`, and `flex-basis`.
+
+```css
+.item {
+  flex: 1 1 100px;
+}
+```
+
+---
+
+### 🔹 `align-self`
+
+Overrides `align-items` for individual items.
+
+- `auto` (default)
+- `flex-start` | `flex-end`
+- `center`
+- `baseline`
+- `stretch`
+
+```css
+.item {
+  align-self: flex-end;
+}
+```
+
+---
+
+# 📊 CSS Grid – Complete Cheat Sheet
+
+CSS Grid Layout is a two-dimensional layout system for the web. It lets you layout items in rows and columns easily.
+
+---
+
+## 🔧 Grid Container Properties
+
+### ✅ `display: grid;` / `inline-grid`
+
+Turns an element into a grid container.
+
+```css
+.container {
+  display: grid;
+}
+```
+
+---
+
+### ✅ `grid-template-columns` / `grid-template-rows`
+
+Defines column/row sizes and counts.
+
+```css
+.container {
+  grid-template-columns: 200px 1fr auto;
+  grid-template-rows: 100px 50px;
+}
+```
+
+---
+
+### ✅ `gap`, `row-gap`, `column-gap`
+
+Sets spacing between rows/columns.
+
+```css
+.container {
+  gap: 10px;
+}
+```
+
+---
+
+### ✅ `grid-template-areas`
+
+Creates named layout areas for easy positioning.
+
+```css
+.container {
+  grid-template-areas:
+    'header header'
+    'sidebar main'
+    'footer footer';
+}
+```
+
+---
+
+### ✅ `grid-auto-rows`, `grid-auto-columns`
+
+Sets size of automatically created tracks.
+
+```css
+.container {
+  grid-auto-rows: 100px;
+}
+```
+
+---
+
+### ✅ `grid-auto-flow`
+
+Controls auto-placement direction.
+
+```css
+.container {
+  grid-auto-flow: row; /* or column */
+}
+```
+
+---
+
+## 🎯 Grid Item Properties
+
+### 🔹 `grid-column` / `grid-row`
+
+Defines start and end lines.
+
+```css
+.item {
+  grid-column: 1 / 3;
+  grid-row: 2 / 4;
+}
+```
+
+---
+
+### 🔹 `grid-column-start`, `grid-column-end`
+
+Control which grid lines the item spans.
+
+---
+
+### 🔹 `grid-area`
+
+Assigns an item to a named grid area.
+
+```css
+.item {
+  grid-area: header;
+}
+```
+
+---
+
+### 🔹 `justify-self`, `align-self`, `place-self`
+
+Align a single item in the cell:
+
+- `start`, `end`, `center`, `stretch`
+
+---
+
+## 🔄 Grid Container Alignment
+
+- `justify-items`: Aligns all items horizontally.
+- `align-items`: Aligns all items vertically.
+- `place-items`: Shorthand of both.
+
+- `justify-content`: Aligns the grid inside the container horizontally.
+- `align-content`: Aligns vertically.
+- `place-content`: Shorthand for both.
+
+---
+
+## 📍 Repeat Syntax
+
+```css
+grid-template-columns: repeat(3, 1fr);
+```
+
+---
+
+## 📊 Unit: `fr`
+
+Represents a fraction of the available space.
+
+```css
+grid-template-columns: 1fr 2fr;
+```
+
+---
+
+## 🎨 Example
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.item {
+  grid-column: span 2;
+}
+```
+
+---
