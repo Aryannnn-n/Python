@@ -1,0 +1,132 @@
+* {
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+body {
+  background-color: black;
+}
+
+.main {
+  background-image: url('/assets/images/bg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: max(1200px, 100vw);
+  height: 100vh;
+  position: relative;
+}
+
+.main .box {
+  height: 100vh;
+  width: 100%;
+  opacity: 0.69;
+  background-color: black;
+  position: absolute;
+  top: 0;
+}
+
+nav {
+  display: flex;
+  width: 60vw;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+}
+
+nav img {
+  color: red;
+  width: 114px;
+  position: relative;
+  z-index: 10;
+}
+
+nav button {
+  position: relative;
+  z-index: 10;
+}
+
+.hero {
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  gap: 13px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero > :nth-child(1) {
+  font-weight: 900;
+  font-size: 56px;
+  text-align: center;
+}
+
+/* .hero > :nth-child() {
+  font-weight: 900;
+  font-size: 56px;
+  text-align: center;
+} */
+
+.hero > :nth-child(2) {
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+}
+
+.hero > :nth-child(3) {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+}
+
+.btn {
+  padding: 0.4rem;
+  border-radius: 4px;
+  background-color: rgba(23, 23, 23, 0.1);
+  color: white;
+  padding: 10px 22px 10px;
+  border: 1px solid rgba(133, 129, 129, 0.9);
+  font-weight: bolder;
+  font-size: 12px;
+}
+
+.btn-red {
+  background-color: red;
+  margin-left: 20px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.btn-red-sm {
+  background-color: red;
+  margin-left: 20px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.hero input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(133, 129, 129, 0.9);
+  background-color: rgba(23, 23, 23, 0.1);
+  padding: 9px 77px 9px 20px;
+  color: white;
+}
+
+.hero-inp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sepration {
+  color: wheat;
+  border-top: 8px solid red;
+  border-radius: 92%;
+  box-shadow: 16px;
+}
+
