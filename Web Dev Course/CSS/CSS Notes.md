@@ -1309,3 +1309,412 @@ grid-template-columns: 1fr 2fr;
 ```
 
 ---
+
+# CSS Transform Notes
+
+CSS Transform allows you to visually manipulate elements by skewing, rotating, translating, or scaling.
+
+---
+
+## ✅ Syntax
+
+```css
+transform: function(value);
+```
+
+Multiple transform functions can be chained using space:
+
+```css
+transform: rotate(30deg) scale(1.5);
+```
+
+---
+
+## 🔹 2D Transform Functions
+
+| Function                   | Description                                                     |
+| -------------------------- | --------------------------------------------------------------- |
+| `scaleX(n)`                | Scales the element along the X-axis                             |
+| `scaleY(n)`                | Scales the element along the Y-axis                             |
+| `scale(x, y)`              | Scales on both X and Y axes                                     |
+| `translateX(n)`            | Moves the element along the X-axis                              |
+| `translateY(n)`            | Moves along Y-axis                                              |
+| `translate(x, y)`          | Moves along both X and Y                                        |
+| `rotate(angle)`            | Rotates the element clockwise by given degree around the Z-axis |
+| `skew(x-angle, y-angle)`   | Skews along X and Y                                             |
+| `skewX(angle)`             | Skews only along X-axis                                         |
+| `skewY(angle)`             | Skews only along Y-axis                                         |
+| `matrix(a, b, c, d, e, f)` | Applies a 2D matrix transformation                              |
+
+---
+
+## 🔸 3D Transform Functions
+
+| Function                   | Description                          |
+| -------------------------- | ------------------------------------ |
+| `translate3d(x, y, z)`     | Moves along all three axes           |
+| `translateZ(z)`            | Moves along Z-axis                   |
+| `rotateX(angle)`           | Rotates around X-axis                |
+| `rotateY(angle)`           | Rotates around Y-axis                |
+| `rotate3d(x, y, z, angle)` | Rotates in 3D space                  |
+| `scaleZ(z)`                | Scales along Z-axis                  |
+| `matrix3d(...)`            | 3D transformation matrix (16 values) |
+
+---
+
+## 🌀 Additional Notes
+
+- Use `transition` to animate transformations smoothly.
+
+```css
+transition: transform 0.5s ease;
+```
+
+- To enable 3D effects, set `perspective` on the parent:
+
+```css
+.parent {
+  perspective: 500px;
+}
+```
+
+---
+
+## 📌 Example Visual Description
+
+### ScaleX:
+
+Expands the element width-wise on hover.
+
+### TranslateY:
+
+Moves the element downward when hovered.
+
+### Rotate:
+
+Spins the element clockwise (e.g., 270 degrees).
+
+### Matrix3D:
+
+A complex transformation combining scale, rotate, skew, and translate in 3D.
+
+---
+
+## CSS Transitions
+
+CSS Transitions enable you to change property values smoothly (over a given duration).
+
+### Syntax
+
+```css
+selector {
+  transition-property: property_name;
+  transition-duration: time;
+  transition-timing-function: easing_function;
+  transition-delay: time;
+}
+```
+
+### Properties
+
+- **transition-property**: Specifies the name of the CSS property the transition effect is for. Use `all` to apply to all.
+- **transition-duration**: Defines how long the transition takes to complete.
+- **transition-timing-function**: Describes how the intermediate values of the transition are calculated.
+- **transition-delay**: Defines a delay before the transition starts.
+
+### Shorthand Syntax
+
+```css
+transition: property duration timing-function delay;
+```
+
+Example:
+
+```css
+div {
+  transition: all 1s ease-in 1s;
+}
+```
+
+### Common Timing Functions
+
+- `ease`: Starts slow, speeds up, then slows down (default).
+- `linear`: Constant speed.
+- `ease-in`: Starts slow and speeds up.
+- `ease-out`: Starts fast and slows down.
+- `ease-in-out`: Starts and ends slowly.
+- `cubic-bezier(n,n,n,n)`: Custom timing.
+
+---
+
+## CSS Animations
+
+CSS Animations make it possible to animate transitions from one CSS style configuration to another.
+
+### Required Properties
+
+- **@keyframes**: Define the animation.
+- **animation-name**: Name of the @keyframes animation.
+- **animation-duration**: How long the animation takes.
+
+### Other Properties
+
+- **animation-timing-function**
+- **animation-delay**
+- **animation-iteration-count**
+- **animation-direction**
+- **animation-fill-mode**
+- **animation-play-state**
+
+### Syntax
+
+```css
+@keyframes example {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: yellow;
+  }
+}
+
+div {
+  animation-name: example;
+  animation-duration: 4s;
+}
+```
+
+### Animation Shorthand
+
+```css
+animation: name duration timing-function delay iteration-count direction
+  fill-mode play-state;
+```
+
+Example:
+
+```css
+animation: example 4s ease-in-out 1s 3 alternate both running;
+```
+
+### Common Values
+
+- **animation-iteration-count**: Number of repetitions (or `infinite`).
+- **animation-direction**: `normal`, `reverse`, `alternate`, `alternate-reverse`.
+- **animation-fill-mode**: Controls styles applied before/after animation (`none`, `forwards`, `backwards`, `both`).
+- **animation-play-state**: `running` or `paused`.
+
+---
+
+## CSS: Object Fit, Object Position & Background Properties
+
+### `object-fit`
+
+- Defines how a replaced element's content (like `<img>`) should be resized to fit its container.
+
+**Values:**
+
+- `fill` (default): Stretch to fill the content box, may be distorted.
+- `contain`: Scales to maintain aspect ratio while fitting within the content box.
+- `cover`: Scales to maintain aspect ratio while covering the entire content box.
+- `none`: Keeps original size.
+- `scale-down`: Compares `none` and `contain` and applies the smaller result.
+
+**Example:**
+
+```css
+img {
+  object-fit: cover;
+}
+```
+
+---
+
+### `object-position`
+
+- Specifies the alignment of the content within a replaced element when `object-fit` is used.
+
+**Syntax:**
+
+```css
+object-position: x y;
+```
+
+- Values like `top`, `left`, `center`, `right`, `bottom`, or percentages.
+
+**Example:**
+
+```css
+img {
+  object-fit: cover;
+  object-position: center center;
+}
+```
+
+---
+
+## Background Properties
+
+### `background-image`
+
+Sets one or more background images.
+
+```css
+background-image: url('image.jpg');
+```
+
+### `background-position`
+
+Sets the starting position of a background image.
+
+```css
+background-position: center center;
+```
+
+- Can also use values like `top`, `bottom`, `left`, `right`, percentages or lengths.
+
+### `background-repeat`
+
+Defines how background images repeat.
+
+```css
+background-repeat: no-repeat;
+```
+
+**Values:**
+
+- `repeat` (default)
+- `repeat-x`
+- `repeat-y`
+- `no-repeat`
+
+### `background-clip`
+
+Defines how far the background extends within an element.
+
+```css
+background-clip: border-box;
+```
+
+**Values:**
+
+- `border-box` (default)
+- `padding-box`
+- `content-box`
+
+---
+
+**Example Combining All:**
+
+```css
+.box {
+  background-image: url('bg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+}
+```
+
+---
+
+**Visual Tip:** Use a box with fixed width and height to easily demonstrate how `object-fit` and background properties behave visually with different content.
+
+---
+
+# 🎨 CSS Filters Overview
+
+CSS Filters allow you to apply graphical effects such as blurring, color shifting, and more to elements. These effects can enhance the visual presentation of images, backgrounds, borders, and other elements.
+
+## 🔧 `filter` Property
+
+The `filter` property applies effects directly to the element, including its contents, borders, and padding.
+
+**Syntax:**
+
+```css
+filter: none | <filter-function> [<filter-function>] * | url();
+```
+
+**Example:**
+
+```css
+img {
+  filter: blur(5px) brightness(1.2);
+}
+```
+
+## 🌫️ `backdrop-filter` Property
+
+The `backdrop-filter` property applies effects to the area behind an element. It's commonly used with semi-transparent backgrounds to create a frosted-glass effect.
+
+**Syntax:**
+
+```css
+backdrop-filter: none | <filter-function> [<filter-function>] * | url();
+```
+
+**Example:**
+
+```css
+.modal {
+  backdrop-filter: blur(10px) brightness(0.8);
+}
+```
+
+## 🧪 CSS Filter Functions
+
+Below is a list of available filter functions:
+
+- **`blur(radius)`**: Applies a Gaussian blur.  
+  _Example:_ `blur(5px)`
+
+- **`brightness(amount)`**: Adjusts brightness. Values >1 increase brightness, values <1 decrease it.  
+  _Example:_ `brightness(1.5)`
+
+- **`contrast(amount)`**: Adjusts contrast. Values >1 increase contrast, values <1 decrease it.  
+  _Example:_ `contrast(120%)`
+
+- **`drop-shadow(offset-x offset-y blur-radius color)`**: Applies a drop shadow.  
+  _Example:_ `drop-shadow(4px 4px 10px rgba(0,0,0,0.5))`
+
+- **`grayscale(amount)`**: Converts the image to grayscale.  
+  _Example:_ `grayscale(50%)`
+
+- **`hue-rotate(angle)`**: Rotates the hue of the image.  
+  _Example:_ `hue-rotate(90deg)`
+
+- **`invert(amount)`**: Inverts the colors.  
+  _Example:_ `invert(100%)`
+
+- **`opacity(amount)`**: Adjusts the opacity.  
+  _Example:_ `opacity(75%)`
+
+- **`saturate(amount)`**: Saturates the colors.  
+  _Example:_ `saturate(2)`
+
+- **`sepia(amount)`**: Applies a sepia filter.  
+  _Example:_ `sepia(60%)`
+
+## 🧩 Combining Multiple Filters
+
+Multiple filter functions can be combined by separating them with spaces. They are applied in the order they are listed.
+
+**Example:**
+
+```css
+img {
+  filter: grayscale(50%) blur(2px) brightness(1.2);
+}
+```
+
+## 📘 Additional Notes
+
+- **SVG Filters**: You can reference SVG filters using the `url()` function.  
+  _Example:_ `filter: url('filters.svg#myFilter');`
+
+- **Performance**: Using filters can impact performance, especially on large elements or complex filter chains.
+
+- **Browser Support**: Most modern browsers support CSS filters, but always check compatibility, especially for `backdrop-filter`, which may have limited support or require vendor prefixes.
+
+---
+

@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSS Notes.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%F0%9F%A7%91%E2%80%8D%F0%9F%8E%A8-css-basics-%E2%80%93-quick-reference">🧑‍🎨 CSS Basics – Quick Reference</h1>
+<p>This README covers the foundational ways to include CSS in a webpage and common selectors for targeting elements.</p>
+<hr>
+<h2 id="%F0%9F%8E%A8-3-ways-to-include-css">🎨 3 Ways To Include CSS</h2>
+<h3 id="%E2%9C%85-internal-css">✅ Internal CSS</h3>
+<p>CSS is written inside a <code>&lt;style&gt;</code> tag within the <code>&lt;head&gt;</code> of an HTML file.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+      <span class="hljs-selector-tag">p</span> {
+        <span class="hljs-attribute">color</span>: blue;
+      }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a blue paragraph using internal CSS.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-inline-css">✅ Inline CSS</h3>
+<p>CSS is applied directly to HTML elements using the <code>style</code> attribute.</p>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color: blue;"</span>&gt;</span>This is a blue paragraph using inline CSS.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-external-css">✅ External CSS</h3>
+<p>CSS is written in a separate file and linked to the HTML file.</p>
+<p><strong>index.html</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"style.css"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a blue paragraph using external CSS.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p><strong>style.css</strong></p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%A7%A9-css-selectors">🧩 CSS Selectors</h2>
+<h3 id="%F0%9F%94%B9-class-selector">🔹 Class Selector</h3>
+<p>Targets elements with a specific class name.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.myClass</span> {
+  <span class="hljs-attribute">color</span>: green;
+}
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"myClass"</span>&gt;</span>This text is green using a class selector.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B8-id-selector">🔸 ID Selector</h3>
+<p>Targets a unique element with a specific ID.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-id">#myId</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;
+}
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myId"</span>&gt;</span>This text uses an ID selector.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%91%B6-child-selector">👶 Child Selector (<code>&gt;</code>)</h3>
+<p>Targets <strong>direct child</strong> elements only.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">div</span> &gt; <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This paragraph is a direct child and will be red.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This paragraph is not a direct child and won't be red.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%8C%B3-descendant-selector-space">🌳 Descendant Selector (space)</h3>
+<p>Targets <strong>all nested</strong> elements inside a parent, regardless of depth.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">div</span> <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: orange;
+}
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This paragraph is orange.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This nested paragraph is also orange.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%8C%90-universal-selector">🌐 Universal Selector (<code>*</code>)</h3>
+<p>Applies styles to <strong>all elements</strong> on the page.</p>
+<pre class="hljs"><code><div>* {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%8E%AD-pseudo-selectors">🎭 Pseudo Selectors</h2>
+<p>Used to define special states or parts of elements.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/* Style when mouse hovers over link */</span>
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+
+<span class="hljs-comment">/* Style the first paragraph inside an element */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">font-weight</span>: bold;
+}
+
+<span class="hljs-comment">/* Style visited links */</span>
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: purple;
+}
+
+<span class="hljs-comment">/* Style input fields when focused */</span>
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">:focus</span> {
+  <span class="hljs-attribute">border-color</span>: blue;
+}
+</div></code></pre>
+<hr>
+<h1 id="%F0%9F%93%A6-css-box-model--typography-%E2%80%93-quick-reference">📦 CSS Box Model &amp; Typography – Quick Reference</h1>
+<p>This section includes the CSS Box Model and important typography-related properties in CSS.</p>
+<hr>
+<h2 id="%F0%9F%93%A6-css-box-model">📦 CSS Box Model</h2>
+<p>The Box Model describes how every HTML element is represented as a rectangular box.</p>
+<h3 id="%F0%9F%93%8A-diagram-of-box-model">📊 Diagram of Box Model</h3>
+<pre class="hljs"><code><div>+---------------------------+
+|        Margin             |
+|  +---------------------+  |
+|  |      Border         |  |
+|  |  +---------------+  |  |
+|  |  |   Padding     |  |  |
+|  |  |  +---------+  |  |  |
+|  |  |  | Content |  |  |  |
+|  |  |  +---------+  |  |  |
+|  |  +---------------+  |  |
+|  +---------------------+  |
++---------------------------+
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%94%A0-fonts-in-css">🔠 Fonts in CSS</h2>
+<h3 id="font-style">Font Style</h3>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">font-style</span>: <span class="hljs-selector-tag">italic</span>; <span class="hljs-comment">/* Text leans to the right */</span>
+<span class="hljs-selector-tag">font-style</span>: <span class="hljs-selector-tag">normal</span>; <span class="hljs-comment">/* Default style */</span>
+<span class="hljs-selector-tag">font-style</span>: <span class="hljs-selector-tag">oblique</span>; <span class="hljs-comment">/* Similar to italic with less tilt */</span>
+</div></code></pre>
+<hr>
+<h3 id="font-weight">Font Weight</h3>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">font-weight</span>: <span class="hljs-selector-tag">normal</span>; <span class="hljs-comment">/* Default */</span>
+<span class="hljs-selector-tag">font-weight</span>: <span class="hljs-selector-tag">bold</span>; <span class="hljs-comment">/* Bold text */</span>
+<span class="hljs-selector-tag">font-weight</span>: 100 <span class="hljs-selector-tag">-</span> 900; <span class="hljs-comment">/* Numeric values for precision */</span>
+</div></code></pre>
+<hr>
+<h3 id="font-family">Font Family</h3>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">font-family</span>: '<span class="hljs-selector-tag">Arial</span>', <span class="hljs-selector-tag">sans-serif</span>;
+<span class="hljs-selector-tag">font-family</span>: '<span class="hljs-selector-tag">Times</span> <span class="hljs-selector-tag">New</span> <span class="hljs-selector-tag">Roman</span>', <span class="hljs-selector-tag">serif</span>;
+</div></code></pre>
+<hr>
+<h2 id="%E2%9C%8D%EF%B8%8F-text-decoration">✍️ Text Decoration</h2>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">text-decoration</span>: <span class="hljs-selector-tag">overline</span>; <span class="hljs-comment">/* Line above the text */</span>
+<span class="hljs-selector-tag">text-decoration</span>: <span class="hljs-selector-tag">underline</span>; <span class="hljs-comment">/* Line below the text */</span>
+<span class="hljs-selector-tag">text-decoration</span>: <span class="hljs-selector-tag">line-through</span>; <span class="hljs-comment">/* Line through the text */</span>
+<span class="hljs-selector-tag">text-decoration</span>: <span class="hljs-selector-tag">none</span>; <span class="hljs-comment">/* No decoration */</span>
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%93%90-text-alignment">📐 Text Alignment</h2>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">text-align</span>: <span class="hljs-selector-tag">left</span>; <span class="hljs-comment">/* Align to the left */</span>
+<span class="hljs-selector-tag">text-align</span>: <span class="hljs-selector-tag">center</span>; <span class="hljs-comment">/* Align to the center */</span>
+<span class="hljs-selector-tag">text-align</span>: <span class="hljs-selector-tag">right</span>; <span class="hljs-comment">/* Align to the right */</span>
+<span class="hljs-selector-tag">text-align</span>: <span class="hljs-selector-tag">justify</span>; <span class="hljs-comment">/* Justify text across the line */</span>
+</div></code></pre>
+<h3 id="%F0%9F%93%8A-example">📊 Example</h3>
+<pre class="hljs"><code><div>Left:     This is text
+Center:      This is text
+Right:           This is text
+Justify: This   is   spaced   out   text
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%94%A4-text-transformation">🔤 Text Transformation</h2>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">text-transform</span>: <span class="hljs-selector-tag">uppercase</span>; <span class="hljs-comment">/* ALL CAPS */</span>
+<span class="hljs-selector-tag">text-transform</span>: <span class="hljs-selector-tag">lowercase</span>; <span class="hljs-comment">/* all lowercase */</span>
+<span class="hljs-selector-tag">text-transform</span>: <span class="hljs-selector-tag">capitalize</span>; <span class="hljs-comment">/* First Letter Capitalized */</span>
+<span class="hljs-selector-tag">text-transform</span>: <span class="hljs-selector-tag">none</span>; <span class="hljs-comment">/* No transformation */</span>
+</div></code></pre>
+<h3 id="%F0%9F%93%8A-example">📊 Example</h3>
+<pre class="hljs"><code><div>UPPERCASE -&gt; HELLO WORLD
+lowercase -&gt; hello world
+Capitalize -&gt; Hello World
+None -&gt; Hello world
+</div></code></pre>
+<hr>
+<h2 id="%E2%9C%A8-additional-typography-properties">✨ Additional Typography Properties</h2>
+<h3 id="letter-spacing">Letter Spacing</h3>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">letter-spacing</span>: 2<span class="hljs-selector-tag">px</span>;
+</div></code></pre>
+<h3 id="example">Example</h3>
+<pre class="hljs"><code><div>Text: H  E  L  L  O
+</div></code></pre>
+<hr>
+<h3 id="line-height">Line Height</h3>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">line-height</span>: 1<span class="hljs-selector-class">.6</span>;
+</div></code></pre>
+<h3 id="example">Example</h3>
+<pre class="hljs"><code><div>Line 1: Hello
+
+Line 2: World  &lt;- More space between lines
+</div></code></pre>
+<hr>
+<h3 id="text-shadow">Text Shadow</h3>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">text-shadow</span>: 2<span class="hljs-selector-tag">px</span> 2<span class="hljs-selector-tag">px</span> 5<span class="hljs-selector-tag">px</span> <span class="hljs-selector-tag">gray</span>;
+</div></code></pre>
+<p>(Visual effect can't be shown in )</p>
+<hr>
+<h3 id="text-overflow">Text Overflow</h3>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">text-overflow</span>: <span class="hljs-selector-tag">ellipsis</span>;
+<span class="hljs-selector-tag">text-overflow</span>: <span class="hljs-selector-tag">clip</span>;
+<span class="hljs-selector-tag">overflow</span>: <span class="hljs-selector-tag">hidden</span>;
+<span class="hljs-selector-tag">white-space</span>: <span class="hljs-selector-tag">nowrap</span>;
+</div></code></pre>
+<h3 id="%F0%9F%93%8A-example">📊 Example</h3>
+<pre class="hljs"><code><div>Ellipsis: This is a long text...
+Clip:     This is a long text
+</div></code></pre>
+<hr>
+<p>!Important &gt; Inline Style &gt; ID Selector &gt; Class or Attribute Selector &gt; Element Selector &gt; Universal Selector</p>
+<!-- CSS Units -->
+<p>px
+em
+rem
+vh
+vw
+vmin
+vmax
+%</p>
+<h1 id="%F0%9F%A7%AE-css-specificity--units-%E2%80%93-quick-reference">🧮 CSS Specificity &amp; Units – Quick Reference</h1>
+<p>This section includes the <strong>specificity hierarchy</strong> in CSS and the <strong>various units</strong> used for measurements and sizing.</p>
+<hr>
+<h2 id="%F0%9F%93%8A-css-specificity-hierarchy">📊 CSS Specificity Hierarchy</h2>
+<p>When multiple CSS rules apply to the same element, the browser uses specificity to decide which one to apply. The order of precedence (from highest to lowest) is:</p>
+<pre class="hljs"><code><div>!important &gt; Inline Style &gt; ID Selector &gt; Class/Attribute Selector &gt; Element Selector &gt; Universal Selector
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%93%8F-css-units">📏 CSS Units</h2>
+<p>CSS uses various units to measure length, spacing, and sizes. They can be either <strong>absolute</strong> or <strong>relative</strong>.</p>
+<h3 id="%F0%9F%94%B9-absolute-unit">🔹 Absolute Unit</h3>
+<ul>
+<li><code>px</code> – Pixels: Fixed unit, not responsive.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">font-size</span>: 16<span class="hljs-selector-tag">px</span>;
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B8-relative-units">🔸 Relative Units</h3>
+<ul>
+<li><code>em</code> – Relative to the <strong>font-size of the parent</strong>.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">font-size</span>: 2<span class="hljs-selector-tag">em</span>; <span class="hljs-comment">/* 2x parent size */</span>
+</div></code></pre>
+<ul>
+<li><code>rem</code> – Relative to the <strong>root element's font-size</strong> (<code>html</code> tag).</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">font-size</span>: 1<span class="hljs-selector-class">.5rem</span>;
+</div></code></pre>
+<ul>
+<li><code>%</code> – Relative to the <strong>parent element</strong>.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">width</span>: 50%; <span class="hljs-comment">/* half the width of the parent */</span>
+</div></code></pre>
+<ul>
+<li><code>vh</code> – Relative to <strong>1% of the viewport height</strong>.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">height</span>: 50<span class="hljs-selector-tag">vh</span>; <span class="hljs-comment">/* 50% of the viewport height */</span>
+</div></code></pre>
+<ul>
+<li><code>vw</code> – Relative to <strong>1% of the viewport width</strong>.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">width</span>: 100<span class="hljs-selector-tag">vw</span>; <span class="hljs-comment">/* Full width of the viewport */</span>
+</div></code></pre>
+<ul>
+<li><code>vmin</code> – Relative to the <strong>smaller dimension</strong> (height or width) of the viewport.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">font-size</span>: 10<span class="hljs-selector-tag">vmin</span>;
+</div></code></pre>
+<ul>
+<li><code>vmax</code> – Relative to the <strong>larger dimension</strong> of the viewport.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">padding</span>: 5<span class="hljs-selector-tag">vmax</span>;
+</div></code></pre>
+<hr>
+<h1 id="%F0%9F%8E%A8-advanced-css-styling-%E2%80%93-quick-reference">🎨 Advanced CSS Styling – Quick Reference</h1>
+<p>This guide covers advanced CSS properties like <code>display</code>, <code>box-shadow</code>, <code>text-shadow</code>, <code>outline</code>, styling lists, and controlling overflow.</p>
+<hr>
+<h2 id="%F0%9F%96%BC%EF%B8%8F-display-property">🖼️ Display Property</h2>
+<p>The <code>display</code> property defines how an element is displayed in the document. It is one of the most important properties in CSS.</p>
+<h3 id="common-values">Common Values:</h3>
+<ul>
+<li><code>block</code>: The element takes up the full width and starts on a new line.</li>
+<li><code>inline</code>: The element does not start on a new line and only takes up as much width as necessary.</li>
+<li><code>inline-block</code>: Behaves like <code>inline</code> but allows setting width and height.</li>
+<li><code>none</code>: Hides the element from the layout (it’s not rendered).</li>
+<li><code>flex</code>: Enables Flexbox layout for flexible layouts.</li>
+<li><code>grid</code>: Enables CSS Grid layout.</li>
+<li><code>inline-flex</code> / <code>inline-grid</code>: Same as above but behave like inline elements.</li>
+<li><code>contents</code>: Makes the container disappear, making the child elements act as if they're not wrapped.</li>
+<li><code>table</code>: Makes the element behave like a <code>&lt;table&gt;</code>.</li>
+<li><code>list-item</code>: Makes the element behave like a <code>&lt;li&gt;</code>.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">justify-content</span>: center;
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%8C%AB%EF%B8%8F-shadows--outlines">🌫️ Shadows &amp; Outlines</h2>
+<h3 id="%F0%9F%94%B3-box-shadow">🔳 Box Shadow</h3>
+<p>Adds shadow effects around an element’s frame.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">box-shadow</span>: <span class="hljs-selector-tag">h-offset</span> <span class="hljs-selector-tag">v-offset</span> <span class="hljs-selector-tag">blur</span> <span class="hljs-selector-tag">spread</span> <span class="hljs-selector-tag">color</span> <span class="hljs-selector-tag">inset</span>;
+</div></code></pre>
+<ul>
+<li><strong>h-offset</strong>: Horizontal distance</li>
+<li><strong>v-offset</strong>: Vertical distance</li>
+<li><strong>blur</strong>: Blur radius</li>
+<li><strong>spread</strong>: Size of the shadow</li>
+<li><strong>color</strong>: Shadow color</li>
+<li><strong>inset</strong>: Makes the shadow inner</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">box-shadow</span>: 4<span class="hljs-selector-tag">px</span> 4<span class="hljs-selector-tag">px</span> 10<span class="hljs-selector-tag">px</span> 2<span class="hljs-selector-tag">px</span> <span class="hljs-selector-tag">rgba</span>(0, 0, 0, 0<span class="hljs-selector-class">.2</span>);
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%8D%EF%B8%8F-text-shadow">✍️ Text Shadow</h3>
+<p>Adds shadow to text for visual depth or clarity.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">text-shadow</span>: <span class="hljs-selector-tag">h-offset</span> <span class="hljs-selector-tag">v-offset</span> <span class="hljs-selector-tag">blur</span> <span class="hljs-selector-tag">color</span>;
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">text-shadow</span>: 2<span class="hljs-selector-tag">px</span> 2<span class="hljs-selector-tag">px</span> 4<span class="hljs-selector-tag">px</span> <span class="hljs-selector-id">#888888</span>;
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%96%8D%EF%B8%8F-outline">🖍️ Outline</h3>
+<p>Outlines are lines drawn outside the border edge. Commonly used for highlighting focusable elements.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">outline</span>: <span class="hljs-selector-tag">width</span> <span class="hljs-selector-tag">style</span> <span class="hljs-selector-tag">color</span>;
+</div></code></pre>
+<ul>
+<li><strong>width</strong>: e.g., <code>2px</code></li>
+<li><strong>style</strong>: <code>solid</code>, <code>dotted</code>, <code>dashed</code>, <code>double</code>, etc.</li>
+<li><strong>color</strong>: e.g., <code>red</code></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">outline</span>: 2<span class="hljs-selector-tag">px</span> <span class="hljs-selector-tag">dashed</span> <span class="hljs-selector-tag">red</span>;
+</div></code></pre>
+<blockquote>
+<p>🧠 Unlike <code>border</code>, outlines do not take up space in layout and can overlap content.</p>
+</blockquote>
+<hr>
+<h2 id="%E2%9C%85-styling-lists">✅ Styling Lists</h2>
+<p>You can use <code>list-style-type</code>, <code>list-style-position</code>, and <code>list-style-image</code> for customizing lists.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">ul</span> {
+  <span class="hljs-attribute">list-style-type</span>: square;
+  <span class="hljs-attribute">list-style-position</span>: inside;
+}
+</div></code></pre>
+<ul>
+<li><code>list-style-type</code>: <code>disc</code>, <code>circle</code>, <code>square</code>, <code>decimal</code>, etc.</li>
+<li><code>list-style-position</code>: <code>inside</code>, <code>outside</code></li>
+<li><code>list-style-image</code>: Use an image as the bullet.</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%9C-css-overflow">📜 CSS Overflow</h2>
+<p>Controls what happens when content overflows an element’s box.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">overflow</span>: <span class="hljs-selector-tag">visible</span> | <span class="hljs-selector-tag">hidden</span> | <span class="hljs-selector-tag">scroll</span> | <span class="hljs-selector-tag">auto</span>;
+</div></code></pre>
+<ul>
+<li><code>visible</code>: Default. Content is not clipped.</li>
+<li><code>hidden</code>: Overflowing content is hidden.</li>
+<li><code>scroll</code>: Always adds a scrollbar.</li>
+<li><code>auto</code>: Scrollbar only added when needed.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">overflow</span>: auto;
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%93%8D-css-position-property">📍 CSS Position Property</h2>
+<p>The <code>position</code> property specifies how an element is positioned in the document. It works in conjunction with the <code>top</code>, <code>right</code>, <code>bottom</code>, and <code>left</code> properties.</p>
+<h3 id="%F0%9F%94%B9-static-default">🔹 static (default)</h3>
+<ul>
+<li>Elements are positioned according to the normal document flow.</li>
+<li><code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>, and <code>z-index</code> have <strong>no effect</strong>.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.element</span> {
+  <span class="hljs-attribute">position</span>: static;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B8-relative">🔸 relative</h3>
+<ul>
+<li>Element is positioned relative to its <strong>normal</strong> position.</li>
+<li><code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> move the element <strong>from its original location</strong>.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.element</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">5px</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B8-absolute">🔸 absolute</h3>
+<ul>
+<li>Positioned relative to the <strong>nearest positioned ancestor</strong> (non-static).</li>
+<li>If no such ancestor, it is positioned relative to the <code>&lt;html&gt;</code> element.</li>
+<li>It is removed from normal document flow.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.element</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B8-fixed">🔸 fixed</h3>
+<ul>
+<li>Positioned relative to the <strong>viewport</strong>.</li>
+<li>Stays fixed when the page is scrolled.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.element</span> {
+  <span class="hljs-attribute">position</span>: fixed;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B8-sticky">🔸 sticky</h3>
+<ul>
+<li>A hybrid of <code>relative</code> and <code>fixed</code>.</li>
+<li>Element toggles between <code>relative</code> and <code>fixed</code> depending on scroll position.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.element</span> {
+  <span class="hljs-attribute">position</span>: sticky;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">20px</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%A8-z-index">✨ z-index</h3>
+<ul>
+<li>Controls the <strong>stacking order</strong> of positioned elements.</li>
+<li>Higher value = closer to the front.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.element</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">10</span>;
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%8E%AF-css-variables-custom-properties">🎯 CSS Variables (Custom Properties)</h2>
+<p>CSS variables allow you to define reusable values across your CSS stylesheets.</p>
+<h3 id="%F0%9F%94%B9-syntax">🔹 Syntax</h3>
+<p>Define a variable:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-pseudo">:root</span> {
+  <span class="hljs-attribute">--main-color</span>: <span class="hljs-number">#3498db</span>;
+  <span class="hljs-attribute">--padding</span>: <span class="hljs-number">20px</span>;
+}
+</div></code></pre>
+<p>Use a variable:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.box</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--main-color);
+  <span class="hljs-attribute">padding</span>: <span class="hljs-built_in">var</span>(--padding);
+}
+</div></code></pre>
+<ul>
+<li>Variables are case-sensitive.</li>
+<li>They cascade like normal CSS properties and can be overridden within specific scopes.</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%B2-media-queries">📲 Media Queries</h2>
+<p>Media queries are used to apply CSS rules based on device characteristics such as screen width, height, orientation, and more.</p>
+<h3 id="%F0%9F%94%B9-media-query-syntax">🔹 Media Query Syntax</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">@media</span> <span class="hljs-keyword">not</span>|<span class="hljs-keyword">only</span> mediatype <span class="hljs-keyword">and</span> (expression) {
+  <span class="hljs-comment">/* CSS code */</span>
+}
+</div></code></pre>
+<h3 id="%E2%9C%85-example">✅ Example</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">444px</span>) {
+  <span class="hljs-selector-class">.boxes</span> {
+    <span class="hljs-attribute">background-color</span>: purple;
+  }
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%93%8F-min-width">📏 min-width</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">500px</span>) {
+  <span class="hljs-comment">/* styles apply */</span>
+}
+</div></code></pre>
+<ul>
+<li>✅ Applied when screen width is <strong>500px or more</strong></li>
+<li>❌ Ignored if screen is <strong>less than 500px</strong></li>
+</ul>
+<hr>
+<h3 id="%F0%9F%93%90-max-width">📐 max-width</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">500px</span>) {
+  <span class="hljs-comment">/* styles apply */</span>
+}
+</div></code></pre>
+<ul>
+<li>✅ Applied when screen width is <strong>500px or less</strong></li>
+<li>❌ Ignored if screen is <strong>more than 500px</strong></li>
+</ul>
+<hr>
+<h3 id="%F0%9F%93%9A-common-media-types">📚 Common Media Types</h3>
+<ul>
+<li><code>all</code> – Suitable for all devices.</li>
+<li><code>print</code> – For printed material or print preview.</li>
+<li><code>screen</code> – For computer screens, tablets, smartphones.</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%A6-float-and-clear">📦 Float and Clear</h2>
+<h3 id="%F0%9F%94%B9-float">🔹 float</h3>
+<p>The <code>float</code> property places an element to the left or right of its container, allowing text and inline elements to wrap around it.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">float</span>: left;
+}
+</div></code></pre>
+<p><strong>Values:</strong></p>
+<ul>
+<li><code>left</code> – Floats the element to the left</li>
+<li><code>right</code> – Floats the element to the right</li>
+<li><code>none</code> – Default. Element does not float</li>
+<li><code>inherit</code> – Inherits float value from parent</li>
+</ul>
+<hr>
+<h3 id="%F0%9F%94%B9-clear">🔹 clear</h3>
+<p>The <code>clear</code> property prevents an element from wrapping around floating elements.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.clearfix</span> {
+  <span class="hljs-attribute">clear</span>: both;
+}
+</div></code></pre>
+<p><strong>Values:</strong></p>
+<ul>
+<li><code>left</code> – No floating elements allowed on the left</li>
+<li><code>right</code> – No floating elements allowed on the right</li>
+<li><code>both</code> – No floating elements allowed on either side</li>
+<li><code>none</code> – Allows floating elements on both sides</li>
+</ul>
+<hr>
+<p>✅ Use a clearfix to contain floats inside a container:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">::after</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+  <span class="hljs-attribute">display</span>: table;
+  <span class="hljs-attribute">clear</span>: both;
+}
+</div></code></pre>
+<hr>
+<h1 id="%F0%9F%8E%AF-advanced-css-selectors-%E2%80%93-cheat-sheet">🎯 Advanced CSS Selectors – Cheat Sheet</h1>
+<hr>
+<h2 id="%F0%9F%A7%A0-pseudo-classes">🧠 Pseudo-Classes</h2>
+<h3 id="first-child"><code>:first-child</code></h3>
+<p>Selects the first child of a parent element.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.box</span><span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">background-color</span>: red;
+}
+</div></code></pre>
+<hr>
+<h3 id="nth-childodd"><code>:nth-child(odd)</code></h3>
+<p>Selects every odd child element (1st, 3rd, 5th, ...).</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.box</span><span class="hljs-selector-pseudo">:nth-child(odd)</span> {
+  <span class="hljs-attribute">background-color</span>: blue;
+}
+</div></code></pre>
+<hr>
+<h3 id="nth-last-child2"><code>:nth-last-child(2)</code></h3>
+<p>Selects the second element from the end.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.box</span><span class="hljs-selector-pseudo">:nth-last-child(2)</span> {
+  <span class="hljs-attribute">background-color</span>: red;
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%8E%AD-pseudo-elements">🎭 Pseudo-Elements</h2>
+<h3 id="first-line"><code>::first-line</code></h3>
+<p>Targets the first line of text in an element.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.box</span><span class="hljs-selector-pseudo">::first-line</span> {
+  <span class="hljs-attribute">color</span>: yellow;
+}
+</div></code></pre>
+<hr>
+<h3 id="first-letter"><code>::first-letter</code></h3>
+<p>Targets the first letter of the text in an element.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.box</span><span class="hljs-selector-pseudo">::first-letter</span> {
+  <span class="hljs-attribute">color</span>: peru;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">45px</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="before-and-after"><code>::before</code> and <code>::after</code></h3>
+<p>Used to insert content before or after the content of an element.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.boxes</span><span class="hljs-selector-pseudo">::before</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">'Harry is good'</span>;
+  <span class="hljs-attribute">color</span>: blue;
+}
+
+<span class="hljs-selector-class">.boxes</span><span class="hljs-selector-pseudo">::after</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">'Sigma course is also good'</span>;
+  <span class="hljs-attribute">color</span>: red;
+}
+</div></code></pre>
+<hr>
+<h3 id="selection"><code>::selection</code></h3>
+<p>Applies styles to the portion of an element that is selected by the user.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-pseudo">::selection</span> {
+  <span class="hljs-attribute">background-color</span>: black;
+  <span class="hljs-attribute">color</span>: aqua;
+}
+</div></code></pre>
+<hr>
+<h3 id="placeholder"><code>::placeholder</code></h3>
+<p>Styles placeholder text in <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">::placeholder</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">84</span>, <span class="hljs-number">84</span>, <span class="hljs-number">88</span>);
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%92%A1-group-selectors-and-universal-selectors">💡 Group Selectors and Universal Selectors</h2>
+<h3 id="universal-selector">Universal Selector <code>*</code></h3>
+<p>Targets all elements inside <code>.boxes</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.boxes</span> * {
+  <span class="hljs-attribute">color</span>: blue;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid black;
+}
+</div></code></pre>
+<hr>
+<h3 id="group-selector-p-a-box-data-color%22primary%22">Group Selector <code>p, a, .box, [data-color=&quot;primary&quot;]</code></h3>
+<p>Applies styles to multiple elements and attributes.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">p</span>,
+<span class="hljs-selector-tag">a</span>,
+<span class="hljs-selector-class">.box</span>,
+<span class="hljs-selector-attr">[data-color=<span class="hljs-string">'primary'</span>]</span> {
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">45px</span>;
+}
+</div></code></pre>
+<hr>
+<p>The <strong>Flexbox Layout (Flexible Box)</strong> module makes it easier to design flexible responsive layout structures without using float or positioning.</p>
+<hr>
+<h2 id="%F0%9F%94%A7-flex-container-properties">🔧 Flex Container Properties</h2>
+<h3 id="%E2%9C%85-display-flex">✅ <code>display: flex;</code></h3>
+<p>Defines a flex container.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-flex-direction">✅ <code>flex-direction</code></h3>
+<p>Defines the direction of the <strong>main axis</strong>.</p>
+<ul>
+<li><code>row</code> – Default, left to right.</li>
+<li><code>row-reverse</code> – Right to left.</li>
+<li><code>column</code> – Top to bottom.</li>
+<li><code>column-reverse</code> – Bottom to top.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: column;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-flex-wrap">✅ <code>flex-wrap</code></h3>
+<p>Controls whether flex items wrap or not.</p>
+<ul>
+<li><code>nowrap</code> – Default, all items on one line.</li>
+<li><code>wrap</code> – Items wrap onto multiple lines.</li>
+<li><code>wrap-reverse</code> – Wrap in reverse order.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-flex-flow">✅ <code>flex-flow</code></h3>
+<p>Shorthand for <code>flex-direction</code> and <code>flex-wrap</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-flow</span>: row wrap;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-justify-content">✅ <code>justify-content</code></h3>
+<p>Aligns items <strong>horizontally</strong> along the <strong>main axis</strong>.</p>
+<ul>
+<li><code>flex-start</code> | <code>flex-end</code></li>
+<li><code>center</code></li>
+<li><code>space-between</code></li>
+<li><code>space-around</code></li>
+<li><code>space-evenly</code></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">justify-content</span>: space-between;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-align-items">✅ <code>align-items</code></h3>
+<p>Aligns items <strong>vertically</strong> along the <strong>cross axis</strong>.</p>
+<ul>
+<li><code>stretch</code> (default)</li>
+<li><code>flex-start</code> | <code>flex-end</code></li>
+<li><code>center</code></li>
+<li><code>baseline</code></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">align-items</span>: center;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-align-content">✅ <code>align-content</code></h3>
+<p>Aligns <strong>rows of items</strong> when there's extra space on the <strong>cross axis</strong>.</p>
+<ul>
+<li><code>flex-start</code> | <code>flex-end</code></li>
+<li><code>center</code></li>
+<li><code>space-between</code></li>
+<li><code>space-around</code></li>
+<li><code>stretch</code></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">align-content</span>: space-between;
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%8E%AF-flex-item-properties">🎯 Flex Item Properties</h2>
+<h3 id="%F0%9F%94%B9-order">🔹 <code>order</code></h3>
+<p>Defines the order of the item (default: 0). Lower values appear first.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">order</span>: <span class="hljs-number">2</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B9-flex-grow">🔹 <code>flex-grow</code></h3>
+<p>Defines how much a flex item will grow relative to the rest.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B9-flex-shrink">🔹 <code>flex-shrink</code></h3>
+<p>Defines how a flex item shrinks when space is tight.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">1</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B9-flex-basis">🔹 <code>flex-basis</code></h3>
+<p>Defines the initial size of a flex item <strong>before</strong> remaining space is distributed.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">200px</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B9-flex">🔹 <code>flex</code></h3>
+<p>Shorthand for <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">100px</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B9-align-self">🔹 <code>align-self</code></h3>
+<p>Overrides <code>align-items</code> for individual items.</p>
+<ul>
+<li><code>auto</code> (default)</li>
+<li><code>flex-start</code> | <code>flex-end</code></li>
+<li><code>center</code></li>
+<li><code>baseline</code></li>
+<li><code>stretch</code></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">align-self</span>: flex-end;
+}
+</div></code></pre>
+<hr>
+<h1 id="%F0%9F%93%8A-css-grid-%E2%80%93-complete-cheat-sheet">📊 CSS Grid – Complete Cheat Sheet</h1>
+<p>CSS Grid Layout is a two-dimensional layout system for the web. It lets you layout items in rows and columns easily.</p>
+<hr>
+<h2 id="%F0%9F%94%A7-grid-container-properties">🔧 Grid Container Properties</h2>
+<h3 id="%E2%9C%85-display-grid--inline-grid">✅ <code>display: grid;</code> / <code>inline-grid</code></h3>
+<p>Turns an element into a grid container.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">display</span>: grid;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-grid-template-columns--grid-template-rows">✅ <code>grid-template-columns</code> / <code>grid-template-rows</code></h3>
+<p>Defines column/row sizes and counts.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">200px</span> <span class="hljs-number">1</span>fr auto;
+  <span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-number">100px</span> <span class="hljs-number">50px</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-gap-row-gap-column-gap">✅ <code>gap</code>, <code>row-gap</code>, <code>column-gap</code></h3>
+<p>Sets spacing between rows/columns.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">10px</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-grid-template-areas">✅ <code>grid-template-areas</code></h3>
+<p>Creates named layout areas for easy positioning.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">grid-template-areas</span>:
+    <span class="hljs-string">'header header'</span>
+    <span class="hljs-string">'sidebar main'</span>
+    <span class="hljs-string">'footer footer'</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-grid-auto-rows-grid-auto-columns">✅ <code>grid-auto-rows</code>, <code>grid-auto-columns</code></h3>
+<p>Sets size of automatically created tracks.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">grid-auto-rows</span>: <span class="hljs-number">100px</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%E2%9C%85-grid-auto-flow">✅ <code>grid-auto-flow</code></h3>
+<p>Controls auto-placement direction.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">grid-auto-flow</span>: row; <span class="hljs-comment">/* or column */</span>
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%8E%AF-grid-item-properties">🎯 Grid Item Properties</h2>
+<h3 id="%F0%9F%94%B9-grid-column--grid-row">🔹 <code>grid-column</code> / <code>grid-row</code></h3>
+<p>Defines start and end lines.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / <span class="hljs-number">3</span>;
+  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">2</span> / <span class="hljs-number">4</span>;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B9-grid-column-start-grid-column-end">🔹 <code>grid-column-start</code>, <code>grid-column-end</code></h3>
+<p>Control which grid lines the item spans.</p>
+<hr>
+<h3 id="%F0%9F%94%B9-grid-area">🔹 <code>grid-area</code></h3>
+<p>Assigns an item to a named grid area.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">grid-area</span>: header;
+}
+</div></code></pre>
+<hr>
+<h3 id="%F0%9F%94%B9-justify-self-align-self-place-self">🔹 <code>justify-self</code>, <code>align-self</code>, <code>place-self</code></h3>
+<p>Align a single item in the cell:</p>
+<ul>
+<li><code>start</code>, <code>end</code>, <code>center</code>, <code>stretch</code></li>
+</ul>
+<hr>
+<h2 id="%F0%9F%94%84-grid-container-alignment">🔄 Grid Container Alignment</h2>
+<ul>
+<li>
+<p><code>justify-items</code>: Aligns all items horizontally.</p>
+</li>
+<li>
+<p><code>align-items</code>: Aligns all items vertically.</p>
+</li>
+<li>
+<p><code>place-items</code>: Shorthand of both.</p>
+</li>
+<li>
+<p><code>justify-content</code>: Aligns the grid inside the container horizontally.</p>
+</li>
+<li>
+<p><code>align-content</code>: Aligns vertically.</p>
+</li>
+<li>
+<p><code>place-content</code>: Shorthand for both.</p>
+</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%93%8D-repeat-syntax">📍 Repeat Syntax</h2>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">grid-template-columns</span>: <span class="hljs-selector-tag">repeat</span>(3, 1<span class="hljs-selector-tag">fr</span>);
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%93%8A-unit-fr">📊 Unit: <code>fr</code></h2>
+<p>Represents a fraction of the available space.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">grid-template-columns</span>: 1<span class="hljs-selector-tag">fr</span> 2<span class="hljs-selector-tag">fr</span>;
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%8E%A8-example">🎨 Example</h2>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>fr);
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">grid-column</span>: span <span class="hljs-number">2</span>;
+}
+</div></code></pre>
+<hr>
+<h1 id="css-transform-notes">CSS Transform Notes</h1>
+<p>CSS Transform allows you to visually manipulate elements by skewing, rotating, translating, or scaling.</p>
+<hr>
+<h2 id="%E2%9C%85-syntax">✅ Syntax</h2>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">transform</span>: <span class="hljs-selector-tag">function</span>(<span class="hljs-selector-tag">value</span>);
+</div></code></pre>
+<p>Multiple transform functions can be chained using space:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">transform</span>: <span class="hljs-selector-tag">rotate</span>(30<span class="hljs-selector-tag">deg</span>) <span class="hljs-selector-tag">scale</span>(1<span class="hljs-selector-class">.5</span>);
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%94%B9-2d-transform-functions">🔹 2D Transform Functions</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scaleX(n)</code></td>
+<td>Scales the element along the X-axis</td>
+</tr>
+<tr>
+<td><code>scaleY(n)</code></td>
+<td>Scales the element along the Y-axis</td>
+</tr>
+<tr>
+<td><code>scale(x, y)</code></td>
+<td>Scales on both X and Y axes</td>
+</tr>
+<tr>
+<td><code>translateX(n)</code></td>
+<td>Moves the element along the X-axis</td>
+</tr>
+<tr>
+<td><code>translateY(n)</code></td>
+<td>Moves along Y-axis</td>
+</tr>
+<tr>
+<td><code>translate(x, y)</code></td>
+<td>Moves along both X and Y</td>
+</tr>
+<tr>
+<td><code>rotate(angle)</code></td>
+<td>Rotates the element clockwise by given degree around the Z-axis</td>
+</tr>
+<tr>
+<td><code>skew(x-angle, y-angle)</code></td>
+<td>Skews along X and Y</td>
+</tr>
+<tr>
+<td><code>skewX(angle)</code></td>
+<td>Skews only along X-axis</td>
+</tr>
+<tr>
+<td><code>skewY(angle)</code></td>
+<td>Skews only along Y-axis</td>
+</tr>
+<tr>
+<td><code>matrix(a, b, c, d, e, f)</code></td>
+<td>Applies a 2D matrix transformation</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%94%B8-3d-transform-functions">🔸 3D Transform Functions</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>translate3d(x, y, z)</code></td>
+<td>Moves along all three axes</td>
+</tr>
+<tr>
+<td><code>translateZ(z)</code></td>
+<td>Moves along Z-axis</td>
+</tr>
+<tr>
+<td><code>rotateX(angle)</code></td>
+<td>Rotates around X-axis</td>
+</tr>
+<tr>
+<td><code>rotateY(angle)</code></td>
+<td>Rotates around Y-axis</td>
+</tr>
+<tr>
+<td><code>rotate3d(x, y, z, angle)</code></td>
+<td>Rotates in 3D space</td>
+</tr>
+<tr>
+<td><code>scaleZ(z)</code></td>
+<td>Scales along Z-axis</td>
+</tr>
+<tr>
+<td><code>matrix3d(...)</code></td>
+<td>3D transformation matrix (16 values)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="%F0%9F%8C%80-additional-notes">🌀 Additional Notes</h2>
+<ul>
+<li>Use <code>transition</code> to animate transformations smoothly.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">transition</span>: <span class="hljs-selector-tag">transform</span> 0<span class="hljs-selector-class">.5s</span> <span class="hljs-selector-tag">ease</span>;
+</div></code></pre>
+<ul>
+<li>To enable 3D effects, set <code>perspective</code> on the parent:</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.parent</span> {
+  <span class="hljs-attribute">perspective</span>: <span class="hljs-number">500px</span>;
+}
+</div></code></pre>
+<hr>
+<h2 id="%F0%9F%93%8C-example-visual-description">📌 Example Visual Description</h2>
+<h3 id="scalex">ScaleX:</h3>
+<p>Expands the element width-wise on hover.</p>
+<h3 id="translatey">TranslateY:</h3>
+<p>Moves the element downward when hovered.</p>
+<h3 id="rotate">Rotate:</h3>
+<p>Spins the element clockwise (e.g., 270 degrees).</p>
+<h3 id="matrix3d">Matrix3D:</h3>
+<p>A complex transformation combining scale, rotate, skew, and translate in 3D.</p>
+<hr>
+<h2 id="css-transitions">CSS Transitions</h2>
+<p>CSS Transitions enable you to change property values smoothly (over a given duration).</p>
+<h3 id="syntax">Syntax</h3>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">selector</span> {
+  <span class="hljs-attribute">transition-property</span>: property_name;
+  <span class="hljs-attribute">transition-duration</span>: time;
+  <span class="hljs-attribute">transition-timing-function</span>: easing_function;
+  <span class="hljs-attribute">transition-delay</span>: time;
+}
+</div></code></pre>
+<h3 id="properties">Properties</h3>
+<ul>
+<li><strong>transition-property</strong>: Specifies the name of the CSS property the transition effect is for. Use <code>all</code> to apply to all.</li>
+<li><strong>transition-duration</strong>: Defines how long the transition takes to complete.</li>
+<li><strong>transition-timing-function</strong>: Describes how the intermediate values of the transition are calculated.</li>
+<li><strong>transition-delay</strong>: Defines a delay before the transition starts.</li>
+</ul>
+<h3 id="shorthand-syntax">Shorthand Syntax</h3>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">transition</span>: <span class="hljs-selector-tag">property</span> <span class="hljs-selector-tag">duration</span> <span class="hljs-selector-tag">timing-function</span> <span class="hljs-selector-tag">delay</span>;
+</div></code></pre>
+<p>Example:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">transition</span>: all <span class="hljs-number">1s</span> ease-in <span class="hljs-number">1s</span>;
+}
+</div></code></pre>
+<h3 id="common-timing-functions">Common Timing Functions</h3>
+<ul>
+<li><code>ease</code>: Starts slow, speeds up, then slows down (default).</li>
+<li><code>linear</code>: Constant speed.</li>
+<li><code>ease-in</code>: Starts slow and speeds up.</li>
+<li><code>ease-out</code>: Starts fast and slows down.</li>
+<li><code>ease-in-out</code>: Starts and ends slowly.</li>
+<li><code>cubic-bezier(n,n,n,n)</code>: Custom timing.</li>
+</ul>
+<hr>
+<h2 id="css-animations">CSS Animations</h2>
+<p>CSS Animations make it possible to animate transitions from one CSS style configuration to another.</p>
+<h3 id="required-properties">Required Properties</h3>
+<ul>
+<li><strong>@keyframes</strong>: Define the animation.</li>
+<li><strong>animation-name</strong>: Name of the @keyframes animation.</li>
+<li><strong>animation-duration</strong>: How long the animation takes.</li>
+</ul>
+<h3 id="other-properties">Other Properties</h3>
+<ul>
+<li><strong>animation-timing-function</strong></li>
+<li><strong>animation-delay</strong></li>
+<li><strong>animation-iteration-count</strong></li>
+<li><strong>animation-direction</strong></li>
+<li><strong>animation-fill-mode</strong></li>
+<li><strong>animation-play-state</strong></li>
+</ul>
+<h3 id="syntax">Syntax</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">@keyframes</span> example {
+  <span class="hljs-selector-tag">from</span> {
+    <span class="hljs-attribute">background-color</span>: red;
+  }
+  <span class="hljs-selector-tag">to</span> {
+    <span class="hljs-attribute">background-color</span>: yellow;
+  }
+}
+
+<span class="hljs-selector-tag">div</span> {
+  <span class="hljs-attribute">animation-name</span>: example;
+  <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">4s</span>;
+}
+</div></code></pre>
+<h3 id="animation-shorthand">Animation Shorthand</h3>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">animation</span>: <span class="hljs-selector-tag">name</span> <span class="hljs-selector-tag">duration</span> <span class="hljs-selector-tag">timing-function</span> <span class="hljs-selector-tag">delay</span> <span class="hljs-selector-tag">iteration-count</span> <span class="hljs-selector-tag">direction</span>
+  <span class="hljs-selector-tag">fill-mode</span> <span class="hljs-selector-tag">play-state</span>;
+</div></code></pre>
+<p>Example:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">animation</span>: <span class="hljs-selector-tag">example</span> 4<span class="hljs-selector-tag">s</span> <span class="hljs-selector-tag">ease-in-out</span> 1<span class="hljs-selector-tag">s</span> 3 <span class="hljs-selector-tag">alternate</span> <span class="hljs-selector-tag">both</span> <span class="hljs-selector-tag">running</span>;
+</div></code></pre>
+<h3 id="common-values">Common Values</h3>
+<ul>
+<li><strong>animation-iteration-count</strong>: Number of repetitions (or <code>infinite</code>).</li>
+<li><strong>animation-direction</strong>: <code>normal</code>, <code>reverse</code>, <code>alternate</code>, <code>alternate-reverse</code>.</li>
+<li><strong>animation-fill-mode</strong>: Controls styles applied before/after animation (<code>none</code>, <code>forwards</code>, <code>backwards</code>, <code>both</code>).</li>
+<li><strong>animation-play-state</strong>: <code>running</code> or <code>paused</code>.</li>
+</ul>
+<hr>
+<h2 id="css-object-fit-object-position--background-properties">CSS: Object Fit, Object Position &amp; Background Properties</h2>
+<h3 id="object-fit"><code>object-fit</code></h3>
+<ul>
+<li>Defines how a replaced element's content (like <code>&lt;img&gt;</code>) should be resized to fit its container.</li>
+</ul>
+<p><strong>Values:</strong></p>
+<ul>
+<li><code>fill</code> (default): Stretch to fill the content box, may be distorted.</li>
+<li><code>contain</code>: Scales to maintain aspect ratio while fitting within the content box.</li>
+<li><code>cover</code>: Scales to maintain aspect ratio while covering the entire content box.</li>
+<li><code>none</code>: Keeps original size.</li>
+<li><code>scale-down</code>: Compares <code>none</code> and <code>contain</code> and applies the smaller result.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">object-fit</span>: cover;
+}
+</div></code></pre>
+<hr>
+<h3 id="object-position"><code>object-position</code></h3>
+<ul>
+<li>Specifies the alignment of the content within a replaced element when <code>object-fit</code> is used.</li>
+</ul>
+<p><strong>Syntax:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">object-position</span>: <span class="hljs-selector-tag">x</span> <span class="hljs-selector-tag">y</span>;
+</div></code></pre>
+<ul>
+<li>Values like <code>top</code>, <code>left</code>, <code>center</code>, <code>right</code>, <code>bottom</code>, or percentages.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">object-fit</span>: cover;
+  <span class="hljs-attribute">object-position</span>: center center;
+}
+</div></code></pre>
+<hr>
+<h2 id="background-properties">Background Properties</h2>
+<h3 id="background-image"><code>background-image</code></h3>
+<p>Sets one or more background images.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">background-image</span>: <span class="hljs-selector-tag">url</span>('<span class="hljs-selector-tag">image</span><span class="hljs-selector-class">.jpg</span>');
+</div></code></pre>
+<h3 id="background-position"><code>background-position</code></h3>
+<p>Sets the starting position of a background image.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">background-position</span>: <span class="hljs-selector-tag">center</span> <span class="hljs-selector-tag">center</span>;
+</div></code></pre>
+<ul>
+<li>Can also use values like <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code>, percentages or lengths.</li>
+</ul>
+<h3 id="background-repeat"><code>background-repeat</code></h3>
+<p>Defines how background images repeat.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">background-repeat</span>: <span class="hljs-selector-tag">no-repeat</span>;
+</div></code></pre>
+<p><strong>Values:</strong></p>
+<ul>
+<li><code>repeat</code> (default)</li>
+<li><code>repeat-x</code></li>
+<li><code>repeat-y</code></li>
+<li><code>no-repeat</code></li>
+</ul>
+<h3 id="background-clip"><code>background-clip</code></h3>
+<p>Defines how far the background extends within an element.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">background-clip</span>: <span class="hljs-selector-tag">border-box</span>;
+</div></code></pre>
+<p><strong>Values:</strong></p>
+<ul>
+<li><code>border-box</code> (default)</li>
+<li><code>padding-box</code></li>
+<li><code>content-box</code></li>
+</ul>
+<hr>
+<p><strong>Example Combining All:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.box</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'bg.jpg'</span>);
+  <span class="hljs-attribute">background-position</span>: center center;
+  <span class="hljs-attribute">background-repeat</span>: no-repeat;
+  <span class="hljs-attribute">background-clip</span>: content-box;
+}
+</div></code></pre>
+<hr>
+<p><strong>Visual Tip:</strong> Use a box with fixed width and height to easily demonstrate how <code>object-fit</code> and background properties behave visually with different content.</p>
+<hr>
+<h1 id="%F0%9F%8E%A8-css-filters-overview">🎨 CSS Filters Overview</h1>
+<p>CSS Filters allow you to apply graphical effects such as blurring, color shifting, and more to elements. These effects can enhance the visual presentation of images, backgrounds, borders, and other elements.</p>
+<h2 id="%F0%9F%94%A7-filter-property">🔧 <code>filter</code> Property</h2>
+<p>The <code>filter</code> property applies effects directly to the element, including its contents, borders, and padding.</p>
+<p><strong>Syntax:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">filter</span>: <span class="hljs-selector-tag">none</span> | &lt;<span class="hljs-selector-tag">filter-function</span>&gt; <span class="hljs-selector-attr">[&lt;filter-function&gt;]</span> * | <span class="hljs-selector-tag">url</span>();
+</div></code></pre>
+<p><strong>Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">blur</span>(<span class="hljs-number">5px</span>) <span class="hljs-built_in">brightness</span>(<span class="hljs-number">1.2</span>);
+}
+</div></code></pre>
+<h2 id="%F0%9F%8C%AB%EF%B8%8F-backdrop-filter-property">🌫️ <code>backdrop-filter</code> Property</h2>
+<p>The <code>backdrop-filter</code> property applies effects to the area behind an element. It's commonly used with semi-transparent backgrounds to create a frosted-glass effect.</p>
+<p><strong>Syntax:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">backdrop-filter</span>: <span class="hljs-selector-tag">none</span> | &lt;<span class="hljs-selector-tag">filter-function</span>&gt; <span class="hljs-selector-attr">[&lt;filter-function&gt;]</span> * | <span class="hljs-selector-tag">url</span>();
+</div></code></pre>
+<p><strong>Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.modal</span> {
+  <span class="hljs-attribute">backdrop-filter</span>: <span class="hljs-built_in">blur</span>(<span class="hljs-number">10px</span>) <span class="hljs-built_in">brightness</span>(<span class="hljs-number">0.8</span>);
+}
+</div></code></pre>
+<h2 id="%F0%9F%A7%AA-css-filter-functions">🧪 CSS Filter Functions</h2>
+<p>Below is a list of available filter functions:</p>
+<ul>
+<li>
+<p><strong><code>blur(radius)</code></strong>: Applies a Gaussian blur.<br>
+<em>Example:</em> <code>blur(5px)</code></p>
+</li>
+<li>
+<p><strong><code>brightness(amount)</code></strong>: Adjusts brightness. Values &gt;1 increase brightness, values &lt;1 decrease it.<br>
+<em>Example:</em> <code>brightness(1.5)</code></p>
+</li>
+<li>
+<p><strong><code>contrast(amount)</code></strong>: Adjusts contrast. Values &gt;1 increase contrast, values &lt;1 decrease it.<br>
+<em>Example:</em> <code>contrast(120%)</code></p>
+</li>
+<li>
+<p><strong><code>drop-shadow(offset-x offset-y blur-radius color)</code></strong>: Applies a drop shadow.<br>
+<em>Example:</em> <code>drop-shadow(4px 4px 10px rgba(0,0,0,0.5))</code></p>
+</li>
+<li>
+<p><strong><code>grayscale(amount)</code></strong>: Converts the image to grayscale.<br>
+<em>Example:</em> <code>grayscale(50%)</code></p>
+</li>
+<li>
+<p><strong><code>hue-rotate(angle)</code></strong>: Rotates the hue of the image.<br>
+<em>Example:</em> <code>hue-rotate(90deg)</code></p>
+</li>
+<li>
+<p><strong><code>invert(amount)</code></strong>: Inverts the colors.<br>
+<em>Example:</em> <code>invert(100%)</code></p>
+</li>
+<li>
+<p><strong><code>opacity(amount)</code></strong>: Adjusts the opacity.<br>
+<em>Example:</em> <code>opacity(75%)</code></p>
+</li>
+<li>
+<p><strong><code>saturate(amount)</code></strong>: Saturates the colors.<br>
+<em>Example:</em> <code>saturate(2)</code></p>
+</li>
+<li>
+<p><strong><code>sepia(amount)</code></strong>: Applies a sepia filter.<br>
+<em>Example:</em> <code>sepia(60%)</code></p>
+</li>
+</ul>
+<h2 id="%F0%9F%A7%A9-combining-multiple-filters">🧩 Combining Multiple Filters</h2>
+<p>Multiple filter functions can be combined by separating them with spaces. They are applied in the order they are listed.</p>
+<p><strong>Example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">grayscale</span>(<span class="hljs-number">50%</span>) <span class="hljs-built_in">blur</span>(<span class="hljs-number">2px</span>) <span class="hljs-built_in">brightness</span>(<span class="hljs-number">1.2</span>);
+}
+</div></code></pre>
+<h2 id="%F0%9F%93%98-additional-notes">📘 Additional Notes</h2>
+<ul>
+<li>
+<p><strong>SVG Filters</strong>: You can reference SVG filters using the <code>url()</code> function.<br>
+<em>Example:</em> <code>filter: url('filters.svg#myFilter');</code></p>
+</li>
+<li>
+<p><strong>Performance</strong>: Using filters can impact performance, especially on large elements or complex filter chains.</p>
+</li>
+<li>
+<p><strong>Browser Support</strong>: Most modern browsers support CSS filters, but always check compatibility, especially for <code>backdrop-filter</code>, which may have limited support or require vendor prefixes.</p>
+</li>
+</ul>
+<hr>
+
+</body>
+</html>
